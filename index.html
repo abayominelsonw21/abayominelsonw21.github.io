@@ -1,181 +1,345 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-	<title>Abayomi Nelson</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" />
-	</noscript>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Abayomi Nelson | Senior Data Solutions Engineer</title>
+	<style>
+		:root {
+			--bg-color: #0d1117;
+			--card-bg: #161b22;
+			--text-main: #c9d1d9;
+			--text-muted: #8b949e;
+			--accent: #58a6ff;
+			--border: #30363d;
+			--terminal-green: #3fb950;
+		}
+
+		body {
+			background-color: var(--bg-color);
+			color: var(--text-main);
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+			line-height: 1.6;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 40px 20px;
+		}
+
+		/* Terminal Animation Section */
+		.terminal-window {
+			background-color: #010409;
+			border: 1px solid var(--border);
+			border-radius: 6px;
+			padding: 20px;
+			margin-bottom: 40px;
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+			font-size: 0.9em;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+		}
+
+		.terminal-header {
+			color: var(--text-muted);
+			margin-bottom: 15px;
+			border-bottom: 1px solid var(--border);
+			padding-bottom: 10px;
+			display: flex;
+			gap: 8px;
+		}
+
+		.dot {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+		}
+
+		.dot.red {
+			background-color: #ff5f56;
+		}
+
+		.dot.yellow {
+			background-color: #ffbd2e;
+		}
+
+		.dot.green {
+			background-color: #27c93f;
+		}
+
+		.typing-line {
+			display: block;
+			margin: 5px 0;
+			opacity: 0;
+			animation: fadeIn 0.1s forwards;
+		}
+
+		.prompt {
+			color: var(--terminal-green);
+			font-weight: bold;
+		}
+
+		.command {
+			color: var(--text-main);
+		}
+
+		.output {
+			color: var(--accent);
+		}
+
+		/* Header / Bio */
+		header {
+			margin-bottom: 50px;
+			animation: slideUp 0.8s ease-out 2s forwards;
+			opacity: 0;
+			transform: translateY(20px);
+		}
+
+		h1 {
+			font-size: 2.5em;
+			margin-bottom: 5px;
+			color: #ffffff;
+		}
+
+		h2 {
+			font-size: 1.2em;
+			color: var(--text-muted);
+			font-weight: 400;
+			margin-top: 0;
+		}
+
+		.bio {
+			margin-top: 20px;
+			font-size: 1.05em;
+			color: var(--text-main);
+		}
+
+		/* Projects Section */
+		.projects-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 25px;
+			animation: slideUp 0.8s ease-out 2.5s forwards;
+			opacity: 0;
+			transform: translateY(20px);
+		}
+
+		.project-card {
+			background-color: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 8px;
+			padding: 25px;
+			transition: transform 0.2s, border-color 0.2s;
+		}
+
+		.project-card:hover {
+			border-color: var(--accent);
+		}
+
+		.project-title {
+			font-size: 1.4em;
+			color: var(--accent);
+			margin-top: 0;
+			margin-bottom: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.tech-tags {
+			margin: 15px 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+
+		.tag {
+			background-color: rgba(88, 166, 255, 0.1);
+			color: var(--accent);
+			padding: 4px 10px;
+			border-radius: 12px;
+			font-size: 0.8em;
+			font-weight: 600;
+			border: 1px solid rgba(88, 166, 255, 0.2);
+		}
+
+		.links a {
+			color: var(--text-main);
+			text-decoration: none;
+			margin-right: 15px;
+			font-size: 0.9em;
+			display: inline-flex;
+			align-items: center;
+		}
+
+		.links a:hover {
+			color: var(--accent);
+			text-decoration: underline;
+		}
+
+		.iframe-container {
+			margin-top: 20px;
+			border-radius: 6px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			background: var(--bg-color);
+		}
+
+		/* Footer */
+		footer {
+			margin-top: 60px;
+			padding-top: 20px;
+			border-top: 1px solid var(--border);
+			text-align: center;
+			color: var(--text-muted);
+			animation: slideUp 0.8s ease-out 3s forwards;
+			opacity: 0;
+		}
+
+		@keyframes fadeIn {
+			to {
+				opacity: 1;
+			}
+		}
+
+		@keyframes slideUp {
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	</style>
 </head>
 
-<body class="is-preload">
+<body>
 
-	<!-- Wrapper -->
-	<div id="wrapper" class="fade-in">
-
-		<!-- Intro -->
-		<div id="intro">
-			<h1>Abayomi Nelson<br />
-				Portfolio</h1>
-			<p>A Data-Driven Professional in a Data-Driven World. <a
-					href="https://www.linkedin.com/in/abayomi-nelson/">Abayomi-Nelson</a>
-			<ul class="actions">
-				<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-			</ul>
+	<div class="container">
+		<div class="terminal-window">
+			<div class="terminal-header">
+				<div class="dot red"></div>
+				<div class="dot yellow"></div>
+				<div class="dot green"></div>
+			</div>
+			<div id="terminal-content">
+			</div>
 		</div>
 
+		<header>
+			<h1>Abayomi Nelson</h1>
+			<h2>Senior Data Solutions Engineer | Master of Data Science</h2>
+			<div class="bio">
+				<p>I architect petabyte-scale data pipelines and private, hardware-optimized AI infrastructure.
+					Currently engineering Medallion architectures and AI-ready data products at Epsilon. I leverage
+					AI-integrated development (Cursor) to drive massive delivery speed and automated pipeline
+					optimization.</p>
+				<p>Louisiana raised. Proud member of Phi Beta Sigma Fraternity, Inc.</p>
+			</div>
+		</header>
 
-		<!-- Nav -->
-		<nav id="nav">
-			<ul class="links">
-				<li class="active"><a href="index.html">Projects</a></li>
+		<h3
+			style="color: var(--text-muted); border-bottom: 1px solid var(--border); padding-bottom: 10px; animation: slideUp 0.8s ease-out 2.2s forwards; opacity: 0; transform: translateY(20px);">
+			Featured Architectures</h3>
 
-			</ul>
-			<ul class="icons">
-				<li><a href="https://www.linkedin.com/in/abayomi-nelson/" class="icon brands fa-linkedin"><span
-							class="label">fa-linkedin</span></a></li>
-				<li><a href="https://github.com/abayominelsonw21" class="icon brands fa-github"><span
-							class="label">GitHub</span></a></li>
-			</ul>
-		</nav>
+		<div class="projects-grid">
 
-		<!-- Main -->
-		<div id="main">
-
-			<!-- Featured Post -->
-			<article class="post featured">
-				<header class="major">
-					<h2><a href="#">About Me</a></h2>
-					<p>Hello! <br />
-						My Name is Abayomi Nelson and I'm an Data Analyst at the early stages of my career. I will be
-						earning my Bachelor's Degree in Information Systems & Decision Sciences with a concentration in
-						data analytics. I have included some of my projects from over the years of my academic career
-						inorder to give a brief snapshot of my skillset. If any of the projects strikes interest, please
-						do not hesitate to reach out. Thank you for taking the time out to view my site. <br />
-					</p>
-				</header>
-				<a href="https://github.com/AlexTheAnalyst/PortfolioProjects/blob/main/Data%20Cleaning%20Portfolio%20Project%20Queries.sql"
-					class="image main"><img src="images\housing.jpg" alt="" /></a>
-				<ul class="actions special">
-					<li><a href="https://drive.google.com/file/d/1drZ_N9Oh700xWoDxMLldwvURQEysPIHS/view?usp=sharing"
-							class="button large">View Resume</a></li>
-				</ul>
-			</article>
-
-			<!-- Posts -->
-			<section class="posts">
-				<article>
-					<header>
-						<h2><a href="#">Exploratory Data Analysis<br />
-								of<br />
-								Videogame Sales</a></h2>
-					</header>
-					<a href="https://github.com/abayominelsonw21/Abayomi-Nelson-Portfolio/blob/main/gamedata.ipynb"
-						class="image fit"><img src="images/exploratory-data-analysis-using-python-blog-hero.jpeg"
-							alt="" /></a>
-					<p>Let's take a deep dive into videogame trends, and gain more insight on the industry. </p>
-					<ul class="actions special">
-						<li><a href="https://github.com/abayominelsonw21/Abayomi-Nelson-Portfolio/blob/main/gamedata.ipynb"
-								class="button">View Project</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
-						<h2><a href="#">Excel Dashboard<br />
-								of<br />
-								Bike Sales</a></h2>
-					</header>
-					<a href="https://github.com/abayominelsonw21/Abayomi-Nelson-Portfolio/blob/main/Bike%20Sales%20Dashboard.xlsx"
-						class="image fit"><img src="images/sales-dashboard.jpeg" alt="" /></a>
-					<p>In this projecct, we will be producing an Excel Dashboard of bicycle sales based on various
-						demographics. </p>
-					<ul class="actions special">
-						<li><a href="https://github.com/abayominelsonw21/Abayomi-Nelson-Portfolio/blob/main/Bike%20Sales%20Dashboard.xlsx"
-								class="button">View Project</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
-						<h2><a href="#">Database Management<br />
-								with SQL</a></h2>
-					</header>
-					<a href="https://github.com/abayominelsonw21/Abayomi-Nelson-Portfolio/blob/main/CampBowWow.zip/CampBowWow.sql"
-						class="image fit"><img src="images/dbms.jpeg" alt="" /></a>
-					<p>For this project, we will be going through the database management process inorder to contruct a
-						database where we can run queries.</p>
-					<ul class="actions special">
-						<li><a href="https://github.com/abayominelsonw21/Abayomi-Nelson-Portfolio/blob/main/CampBowWow.zip/CampBowWow.sql"
-								class="button">View Project</a></li>
-					</ul>
-				</article>
-				<article>
-					<header>
-						<h2><a href="#">Tableau Dashboard<br />
-							</a></h2>
-					</header>
-					<a href="#" class="image fit"><img src="images/Tableau.jpeg" alt="" /></a>
-					<p>Let us contruct a dashboard using a buisness intellegence software to inspect work related
-						incidents with different companies.</p>
-					<ul class="actions special">
-						<li><a href="#" class="button">View Project</a></li>
-					</ul>
-				</article>
-
-
-				<!-- Footer -->
-				<footer id="footer">
-
-					<section class="split contact">
-						<section class="alt">
-							<h3>Address</h3>
-							<p>Baton Rouge, Louisiana </p>
-						</section>
-						<section>
-							<h3>Phone</h3>
-							<p><a href="#">(757)604-1288</a></p>
-						</section>
-						<section>
-							<h3>Email</h3>
-							<p><a href="mailto:abayominelsonw21@gmail.com">Abayominelsonw21@gmail.com</a></p>
-						</section>
-						<section>
-							<h3>Social</h3>
-							<ul class="icons alt">
-								<li><a href="https://www.linkedin.com/in/abayomi-nelson/"
-										class="icon brands fa-linkedin"><span class="label">fa-linkedin</span></a></li>
-								<li><a href="https://github.com/abayominelsonw21" class="icon brands fa-github"><span
-											class="label">GitHub</span></a></li>
-							</ul>
-						</section>
-					</section>
-				</footer>
-
-				<!-- Copyright -->
-				<div id="copyright">
-					<ul>
-						<li>&copy; Untitled</li>
-						<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-					</ul>
+			<div class="project-card">
+				<h3 class="project-title">AutoMarket AI Predictor</h3>
+				<p>An end-to-end predictive machine learning pipeline designed to automate automotive valuation models.
+					Features automated data cleaning, feature engineering, and high-fidelity market prediction.</p>
+				<div class="tech-tags">
+					<span class="tag">Machine Learning</span>
+					<span class="tag">Python</span>
+					<span class="tag">Docker</span>
+					<span class="tag">Streamlit</span>
+					<span class="tag">Scikit-Learn</span>
 				</div>
 
+				<div class="iframe-container">
+					<iframe src="https://auto-ai-pipeline.streamlit.app/?embed=true" width="100%" height="600px"
+						frameborder="0">
+					</iframe>
+				</div>
+
+				<div class="links" style="margin-top: 15px;">
+					<a href="https://github.com/abayominelsonw21/auto-ai-pipeline">View Source Code ↗</a>
+				</div>
+			</div>
+
+			<div class="project-card">
+				<h3 class="project-title">Local Intel RAG Engine</h3>
+				<p>A private, hardware-optimized Retrieval-Augmented Generation engine designed for secure enterprise
+					document intelligence. Implements local LLM inference to ensure 100% data residency and privacy.</p>
+				<div class="tech-tags">
+					<span class="tag">Generative AI</span>
+					<span class="tag">LangChain</span>
+					<span class="tag">ChromaDB</span>
+					<span class="tag">Llama 3</span>
+					<span class="tag">Ollama</span>
+				</div>
+				<div class="links">
+					<a href="#">View Architecture Repo ↗</a>
+				</div>
+			</div>
+
+			<div class="project-card">
+				<h3 class="project-title">Aviation Telemetry Pipeline</h3>
+				<p>A highly scalable Medallion architecture processing complex aviation telemetry data. Built to handle
+					massive throughput while ensuring data quality across Bronze, Silver, and Gold tiers.</p>
+				<div class="tech-tags">
+					<span class="tag">PySpark</span>
+					<span class="tag">Delta Lake</span>
+					<span class="tag">Data Engineering</span>
+					<span class="tag">ETL</span>
+				</div>
+				<div class="links">
+					<a href="#">View Infrastructure Repo ↗</a>
+				</div>
+			</div>
+
 		</div>
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+		<footer>
+			<p>Built with Data & AI. © 2026 Abayomi Nelson.</p>
+			<div class="links" style="justify-content: center; display: flex; margin-top: 10px;">
+				<a href="https://github.com/abayominelsonw21">GitHub</a>
+				<a href="https://www.linkedin.com/in/abayominelson/">LinkedIn</a>
+			</div>
+		</footer>
+	</div>
+
+	<script>
+		// Terminal typing sequence
+		const lines = [
+			{ text: "abayomi@macbook-pro ~ %", type: "prompt" },
+			{ text: " source venv/bin/activate", type: "command" },
+			{ text: "(venv) abayomi@macbook-pro ~ %", type: "prompt" },
+			{ text: " python3 initialize_portfolio.py --profile 'Senior_Data_Engineer'", type: "command" },
+			{ text: "[INFO] Loading Medallion Architecture models...", type: "output", delay: 400 },
+			{ text: "[INFO] Initializing private RAG engine (Llama 3)...", type: "output", delay: 300 },
+			{ text: "[INFO] Connecting to Streamlit Cloud container...", type: "output", delay: 500 },
+			{ text: "[SUCCESS] Portfolio deployed successfully. Booting UI...", type: "output", delay: 600 }
+		];
+
+		const terminal = document.getElementById('terminal-content');
+		let delayCounter = 0;
+
+		lines.forEach((line, index) => {
+			setTimeout(() => {
+				const span = document.createElement('span');
+				span.className = `typing-line ${line.type}`;
+				span.innerHTML = line.type === 'prompt' ? line.text : line.text;
+				terminal.appendChild(span);
+			}, delayCounter);
+
+			delayCounter += line.delay || (line.type === 'prompt' ? 200 : 800);
+		});
+	</script>
 
 </body>
 
