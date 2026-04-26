@@ -16,7 +16,6 @@ layout: null
 			--text-muted: #8b949e;
 			--accent: #58a6ff;
 			--border: #30363d;
-			--terminal-green: #3fb950;
 		}
 
 		body {
@@ -34,71 +33,10 @@ layout: null
 			padding: 40px 20px;
 		}
 
-		/* Terminal Animation Section */
-		.terminal-window {
-			background-color: #010409;
-			border: 1px solid var(--border);
-			border-radius: 6px;
-			padding: 20px;
-			margin-bottom: 40px;
-			font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-			font-size: 0.9em;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-		}
-
-		.terminal-header {
-			color: var(--text-muted);
-			margin-bottom: 15px;
-			border-bottom: 1px solid var(--border);
-			padding-bottom: 10px;
-			display: flex;
-			gap: 8px;
-		}
-
-		.dot {
-			width: 12px;
-			height: 12px;
-			border-radius: 50%;
-		}
-
-		.dot.red {
-			background-color: #ff5f56;
-		}
-
-		.dot.yellow {
-			background-color: #ffbd2e;
-		}
-
-		.dot.green {
-			background-color: #27c93f;
-		}
-
-		.typing-line {
-			display: block;
-			margin: 5px 0;
-			opacity: 0;
-			animation: fadeIn 0.1s forwards;
-		}
-
-		.prompt {
-			color: var(--terminal-green);
-			font-weight: bold;
-		}
-
-		.command {
-			color: var(--text-main);
-		}
-
-		.output {
-			color: var(--accent);
-		}
-
 		/* Header / Bio */
 		header {
 			margin-bottom: 50px;
-			animation: slideUp 0.8s ease-out 2s forwards;
-			opacity: 0;
-			transform: translateY(20px);
+			animation: slideUp 0.8s ease-out forwards;
 		}
 
 		h1 {
@@ -125,9 +63,8 @@ layout: null
 			display: grid;
 			grid-template-columns: 1fr;
 			gap: 25px;
-			animation: slideUp 0.8s ease-out 2.5s forwards;
+			animation: slideUp 0.8s ease-out 0.2s forwards;
 			opacity: 0;
-			transform: translateY(20px);
 		}
 
 		.project-card {
@@ -198,14 +135,8 @@ layout: null
 			border-top: 1px solid var(--border);
 			text-align: center;
 			color: var(--text-muted);
-			animation: slideUp 0.8s ease-out 3s forwards;
+			animation: slideUp 0.8s ease-out 0.4s forwards;
 			opacity: 0;
-		}
-
-		@keyframes fadeIn {
-			to {
-				opacity: 1;
-			}
 		}
 
 		@keyframes slideUp {
@@ -220,16 +151,6 @@ layout: null
 <body>
 
 	<div class="container">
-		<div class="terminal-window">
-			<div class="terminal-header">
-				<div class="dot red"></div>
-				<div class="dot yellow"></div>
-				<div class="dot green"></div>
-			</div>
-			<div id="terminal-content">
-			</div>
-		</div>
-
 		<header>
 			<h1>Abayomi Nelson</h1>
 			<h2>Senior Data Solutions Engineer | Master of Data Science</h2>
@@ -243,7 +164,7 @@ layout: null
 		</header>
 
 		<h3
-			style="color: var(--text-muted); border-bottom: 1px solid var(--border); padding-bottom: 10px; animation: slideUp 0.8s ease-out 2.2s forwards; opacity: 0; transform: translateY(20px);">
+			style="color: var(--text-muted); border-bottom: 1px solid var(--border); padding-bottom: 10px; animation: slideUp 0.8s ease-out 0.1s forwards; opacity: 0; transform: translateY(20px);">
 			Featured Architectures</h3>
 
 		<div class="projects-grid">
@@ -312,34 +233,6 @@ layout: null
 			</div>
 		</footer>
 	</div>
-
-	<script>
-		// Terminal typing sequence
-		const lines = [
-			{ text: "abayomi@macbook-pro ~ %", type: "prompt" },
-			{ text: " source venv/bin/activate", type: "command" },
-			{ text: "(venv) abayomi@macbook-pro ~ %", type: "prompt" },
-			{ text: " python3 initialize_portfolio.py --profile 'Senior_Data_Engineer'", type: "command" },
-			{ text: "[INFO] Loading Medallion Architecture models...", type: "output", delay: 400 },
-			{ text: "[INFO] Initializing private RAG engine (Llama 3)...", type: "output", delay: 300 },
-			{ text: "[INFO] Connecting to Streamlit Cloud container...", type: "output", delay: 500 },
-			{ text: "[SUCCESS] Portfolio deployed successfully. Booting UI...", type: "output", delay: 600 }
-		];
-
-		const terminal = document.getElementById('terminal-content');
-		let delayCounter = 0;
-
-		lines.forEach((line, index) => {
-			setTimeout(() => {
-				const span = document.createElement('span');
-				span.className = `typing-line ${line.type}`;
-				span.innerHTML = line.type === 'prompt' ? line.text : line.text;
-				terminal.appendChild(span);
-			}, delayCounter);
-
-			delayCounter += line.delay || (line.type === 'prompt' ? 200 : 800);
-		});
-	</script>
 
 </body>
 
